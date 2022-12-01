@@ -1,0 +1,6 @@
+.button__group {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   justify-content: center;
+   min-width: 100%;
+}
