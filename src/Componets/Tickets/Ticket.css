@@ -1,0 +1,20 @@
+.page__ticket {
+   background-color: white;
+   padding: 30px;
+}
+.ticket__priceLogo {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   min-width: 100%;
+}
+.ticket__transfer {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.ticket__block{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}

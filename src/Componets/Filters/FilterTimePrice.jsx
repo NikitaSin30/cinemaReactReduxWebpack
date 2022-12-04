@@ -1,32 +1,22 @@
-import { ButtonGroup, Button} from '@mui/material';
-// import filter from '/Filters/FilterTimePrime.css'
+import { ButtonGroup, Button } from '@mui/material';
+import './FilterTimePrice.css';
 
 function FilterTimePrice() {
-   const style = {
+   const styleWidth = {
       display: 'grid',
-   gridTemplateColumns: '1fr 1fr 1fr',
-   gridTemplateRows: '50px',
-   justifyContent: 'center',
-   minWidth: '100%',
-   }
-   const style2 = {
-      minHeight: '50px'
-   }
+      minWidth: '100%',
+   };
    return (
-
-         <ButtonGroup
-         className='button__group'
-         style={style}
-            variant="outlined"
-            aria-label="outlined button group"
-         >
-            <Button className="btn">Самый дешевый</Button>
-            <Button className="btn primary">Самый быстрый</Button>
-            <Button className="btn">Оптимальный</Button>
-         </ButtonGroup>
-
-
-
+      <ButtonGroup
+         style={styleWidth}
+         className="button__group"
+         variant="outlined"
+         aria-label="outlined button group"
+      >
+         <Button className="btn">Самый дешевый</Button>
+         <Button className="btn ">Самый быстрый</Button>
+         <Button className="btn">Оптимальный</Button>
+      </ButtonGroup>
    );
 }
 

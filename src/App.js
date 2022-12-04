@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container } from '@mui/material';
 import './App.css';
 import MainPage from './Componets/MainPage';
 import FilterTransfer from './Componets/Filters/FilterTransfer';
 import Header from './Componets/Header/Header';
+import { getTicketsAll } from './ConnectApi/getTicketsAll';
+import  {getSearchId}  from './ConnectApi/getSearchId';
 
 const style = {
    display: 'grid',
@@ -14,6 +16,23 @@ const style = {
 };
 
 function App() {
+
+   const getH = async () => {
+      let result;
+      try {
+         result = await getSearchId();
+         console.log(result);
+         return result
+      } catch (error) {
+         console.log(error);
+         // setMessageError(!messageError);
+      }
+      // modifySourceHeroes(result);
+   };
+
+   useEffect(() => {
+      getH();
+   });
    return (
       <div className="App">
          <Header />

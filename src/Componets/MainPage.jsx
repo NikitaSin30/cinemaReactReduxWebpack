@@ -1,15 +1,10 @@
-import { Container } from '@mui/system';
 import FilterTimePrice from './Filters/FilterTimePrice';
 import Tickets from './Tickets/Tickets';
+import '../Componets/MainPage.css'
 
 function MainPage() {
-   const style = {
-      display: 'grid',
-      gridTemplateColums: '1fr',
-      gap: '20px',
-   }
    return (
-      <div style={style}>
+      <div className='page__name'>
          <FilterTimePrice />
          <Tickets/>
       </div>
