@@ -12,11 +12,11 @@ module.exports = {
             test: /\.js$/,
             exclude: /node_modules/,
             use: {
-              loader: 'babel-loader',
-              options:{
-               presets:['@babel/preset-env','@babel/preset-react']
-              }
-            }
+               loader: 'babel-loader',
+               options: {
+                  presets: ['@babel/preset-env', '@babel/preset-react'],
+               },
+            },
          },
          {
             test: /\.?jsx$/,
@@ -41,7 +41,7 @@ module.exports = {
       new CleanWebpackPlugin(),
    ],
    devServer: {
-      port: 3000,
+      port: 3200,
    },
    mode: 'development',
 };
