@@ -19,7 +19,6 @@ function App() {
          console.log(error);
          // setMessageError(!messageError);
       }
-      // modifySourceHeroes(result);
    };
 
    useEffect(() => {
