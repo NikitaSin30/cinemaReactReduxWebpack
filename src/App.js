@@ -1,36 +1,38 @@
 import React, { useEffect } from 'react';
-import { Container } from '@mui/material';
 import './App.css';
-import MainPage from './Componets/MainPage';
-import FilterTransfer from './Componets/Filters/FilterTransfer';
-import Header from './Componets/Header/Header';
-import  {getSearchId}  from './ConnectApi/getSearchId';
+import Header from './Componets/Header/Header.jsx';
+import MainPage from './Componets/MainPage/MainPage.jsx';
+import {getMoviesData} from './ConnectApi/methodAPI/getFilms.jsx'
+import { useDispatch,useSelector} from 'react-redux';
+import {getArrayMovies,setError} from './Store/Actions/action'
+
 
 
 function App() {
 
-   const getH = async () => {
-      let result;
-      try {
-         result = await getSearchId();
-         console.log(result);
-         return result
-      } catch (error) {
-         console.log(error);
-         // setMessageError(!messageError);
-      }
-   };
+const dispatch = useDispatch ()
 
-   useEffect(() => {
-      getH();
-   });
+ async function getMovies () {
+      try {
+         const movieArray = await getMoviesData()
+         console.log(movieArray)
+      dispatch(getArrayMovies(movieArray.data))
+      } catch (error) {
+       dispatch(setError(error))
+      }
+}
+
+useEffect(()=>{
+getMovies()
+},[])
+
+const stateMovie = useSelector(state => state.movie)
+console.log('3676765756', stateMovie)
+
    return (
       <div className="App">
          <Header />
-         <Container className="_container"  maxWidth="1000">
-            <FilterTransfer />
-            <MainPage />
-         </Container>
+         <MainPage />
       </div>
    );
 }
