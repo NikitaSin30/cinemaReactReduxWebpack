@@ -1,9 +1,7 @@
-import { TICKETS_ALL } from '../constans';
-import { useDispatch } from 'react-redux';
-import {getArrayMovies,setError} from '../../Store/Actions/action.js'
+// import {setArrayMovies,setError} from '../../Store/Actions/action.js'
 import { MOVIES_ALL } from '../constans';
 
-export async function getMoviesData() {
+export async function getDataApi() {
    try {
       const result = await fetch(MOVIES_ALL);
       const response = await result.json();

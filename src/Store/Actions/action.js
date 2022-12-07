@@ -1,5 +1,5 @@
 
-export const getArrayMovies = (movieArray) =>{
+export const setArrayMovies = (movieArray) =>{
     console.log(movieArray)
     return {
         type: 'LOADING_MOVIES',
@@ -9,7 +9,7 @@ export const getArrayMovies = (movieArray) =>{
 
 export const filterMoviesTitle = () => {
     return {
-        type: 'LOADING_MOVIES',
+        type: 'FILTER_MOVIES_TITLE',
         payload:''
     }
 }

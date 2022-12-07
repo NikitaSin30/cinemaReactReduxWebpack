@@ -2,31 +2,26 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Header from './Componets/Header/Header.jsx';
 import MainPage from './Componets/MainPage/MainPage.jsx';
-import {getMoviesData} from './ConnectApi/methodAPI/getFilms.jsx'
-import { useDispatch} from 'react-redux';
-import {getArrayMovies,setError} from './Store/Actions/action'
-
-
+import { getDataApi } from './ConnectApi/methodAPI/getFilms.jsx';
+import { useDispatch } from 'react-redux';
+import { setArrayMovies, setError } from './Store/Actions/action';
 
 function App() {
+   const dispatch = useDispatch();
 
-const dispatch = useDispatch ()
-
- async function getMovies () {
+   async function getMovies() {
       try {
-         const movieArray = await getMoviesData()
-         console.log(movieArray)
-      dispatch(getArrayMovies(movieArray.data))
+         const movieArray = await getDataApi();
+         console.log(movieArray);
+         dispatch(setArrayMovies(movieArray.data));
       } catch (error) {
-       dispatch(setError(error))
+         dispatch(setError(error));
       }
-}
+   }
 
-useEffect(()=>{
-getMovies()
-},[])
-
-
+   useEffect(() => {
+      getMovies();
+   }, []);
 
    return (
       <div className="App">
