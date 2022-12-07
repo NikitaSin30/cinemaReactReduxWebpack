@@ -3,7 +3,7 @@ import './App.css';
 import Header from './Componets/Header/Header.jsx';
 import MainPage from './Componets/MainPage/MainPage.jsx';
 import {getMoviesData} from './ConnectApi/methodAPI/getFilms.jsx'
-import { useDispatch,useSelector} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import {getArrayMovies,setError} from './Store/Actions/action'
 
 
@@ -26,8 +26,7 @@ useEffect(()=>{
 getMovies()
 },[])
 
-const stateMovie = useSelector(state => state.movie)
-console.log('3676765756', stateMovie)
+
 
    return (
       <div className="App">

@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 
 
 function MoviesAll() {
+   
    const stateMovie = useSelector(state => state.movie)
    console.log('3676765756', stateMovie)
    return (
