@@ -11,9 +11,9 @@ function App() {
 
    async function getMovies() {
       try {
-         const movieArray = await getDataApi();
-         console.log(movieArray);
-         dispatch(setArrayMovies(movieArray.data));
+         const {data} = await getDataApi();
+         console.log(data);
+         dispatch(setArrayMovies(data));
       } catch (error) {
          dispatch(setError(error));
       }
