@@ -2,31 +2,29 @@
 import * as action from '../Actions/action.js';
 
 const initialStateMovies = {
-movie: '',
-error: false,
+   movies: [],
+   valueInput:'',
+   error: false,
 };
-
-
 
 export const moviesReducer = (state = initialStateMovies, action) => {
    switch (action.type) {
       case 'LOADING_MOVIES':
-         console.log(action.payload,3333)
-         console.log(state,3333)
          return {
             ...state,
-            movie: action.payload,
+            movies: action.payload,
          };
       case 'FILTER_MOVIES_TITLE':
+         console.log(state.valueInput);
          return {
             ...state,
-            ...action.payload,
+            valueInput: action.payload
          };
-         case 'LOADING_ERROR':
-            return {
-               ...state,
-               error: ''
-            }
+      case 'LOADING_ERROR':
+         return {
+            ...state,
+            error: '',
+         };
       default:
          return state;
    }

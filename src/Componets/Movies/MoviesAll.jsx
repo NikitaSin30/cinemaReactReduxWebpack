@@ -1,18 +1,25 @@
-import './MoviesAll.css'
-import Movie from './Movie.jsx'
+import './MoviesAll.css';
+import Movie from './Movie.jsx';
 import { useSelector } from 'react-redux';
 
+function MoviesAll({ moviesList }) {
+   // const inputValueTitleMovie = useSelector(state=> state.moviesReducer.valueInput)
 
+   // console.log(435354353453,inputValueTitleMovie);
 
-
-
-function MoviesAll() {
-
-   const stateMovie = useSelector(state => state.movie)
-   console.log('3676765756', stateMovie)
    return (
-      <div className='grid'>
-            <Movie></Movie>
+      <div className="grid">
+         {moviesList.map((movie) => {
+            console.log(movie);
+            return (
+               <Movie
+                  id={movie.id}
+                  key={movie.id}
+                  nameRus={movie.nameRus}
+                  posterSmall={movie.posterSmall}
+               />
+            );
+         })}
       </div>
    );
 }

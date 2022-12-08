@@ -2,11 +2,11 @@
 import MoviesAll from '../Movies/MoviesAll.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 
-function MainPage() {
-      
+function MainPage({moviesList}) {
+
    return (
-      <div className='_container' >
-         <MoviesAll />
+      <div className='_container'>
+         <MoviesAll moviesList={moviesList}/>
       </div>
    );
 }

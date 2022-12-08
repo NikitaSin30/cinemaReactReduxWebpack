@@ -1,16 +1,15 @@
 
 export const setArrayMovies = (movieArray) =>{
-    console.log(movieArray)
     return {
         type: 'LOADING_MOVIES',
         payload: movieArray,
     }
 }
 
-export const filterMoviesTitle = () => {
+export const getValuyInput = (valueInput) => {
     return {
         type: 'FILTER_MOVIES_TITLE',
-        payload:''
+        payload:valueInput,
     }
 }
 
