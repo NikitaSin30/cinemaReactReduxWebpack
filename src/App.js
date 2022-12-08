@@ -12,6 +12,7 @@ import {
 
 function App() {
    const dispatch = useDispatch();
+   // const [inputValueTitle, setInputValueTitle] = useState('');
    const stateMovie = useSelector((state) => state.moviesReducer.movies);
 
    const moviesList = stateMovie.map((item) => {
@@ -21,8 +22,6 @@ function App() {
          posterSmall: item.small_poster,
       };
    });
-
-
 
    async function getMovies() {
       try {
@@ -34,22 +33,23 @@ function App() {
    }
 
    useEffect(() => {
+      console.log(654646)
       getMovies();
    }, []);
 
+   function refreshPage() {
+      getMovies();
+   }
 
-
-   const [inputValue, setInputValue] = useState('')
-
-      const filterTitle = (e) =>{
-         setInputValue(e.target.value)
-         // console.log(inputValue)
-    }
+   // const filterTitleMovie = (e) => {
+   //    setInputValueTitle(e.target.value);
+   //    console.log(inputValueTitle);
+   // };
 
    return (
       <div className="App">
-         <Header filterTitle={filterTitle}/>
-         <MainPage moviesList={moviesList}/>
+         <Header refreshPage={refreshPage} />
+         <MainPage moviesList={moviesList} />
       </div>
    );
 }

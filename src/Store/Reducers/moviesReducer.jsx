@@ -3,7 +3,7 @@ import * as action from '../Actions/action.js';
 
 const initialStateMovies = {
    movies: [],
-   valueInput:'',
+   valueInput: '',
    error: false,
 };
 
@@ -15,10 +15,9 @@ export const moviesReducer = (state = initialStateMovies, action) => {
             movies: action.payload,
          };
       case 'FILTER_MOVIES_TITLE':
-         console.log(state.valueInput);
          return {
             ...state,
-            valueInput: action.payload
+            valueInput: action.payload,
          };
       case 'LOADING_ERROR':
          return {

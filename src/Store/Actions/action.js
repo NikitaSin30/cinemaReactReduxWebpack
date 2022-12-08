@@ -6,7 +6,7 @@ export const setArrayMovies = (movieArray) =>{
     }
 }
 
-export const getValuyInput = (valueInput) => {
+export const setValueInputState = (valueInput) => {
     return {
         type: 'FILTER_MOVIES_TITLE',
         payload:valueInput,

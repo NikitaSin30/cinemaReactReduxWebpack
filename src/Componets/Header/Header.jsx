@@ -1,28 +1,21 @@
 import { AppBar, Toolbar, Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getValuyInput } from '../../Store/Actions/action.js';
+import { setValueInputState } from '../../Store/Actions/action.js';
 import './Header.css';
 
-function Header({filterTitle}) {
-   //    const [inputValue, setInputValue] = useState('')
+function Header({ refreshPage }) {
 
-   //    const filterTitle = (e) =>{
-   //       setInputValue(e.target.value)
-   //       console.log(inputValue)
-   //  }
-
-   
-   // const dispatch = useDispatch();
-   // const filterTitle = (e) => {
-   //    const inputValue = e.target.value;
-   //    dispatch(getValuyInput(inputValue));
-   // };
+   const dispatch = useDispatch();
+   const getValueInput = (e) => {
+      const inputValue = e.target.value.toLowerCase().trim();
+      dispatch(setValueInputState(inputValue));
+   };
    return (
       <header className="header">
          <div className="header__container _container">
             <div className="header__btn">
-               <Button>Обновить</Button>
+               <Button onClick={refreshPage}>Обновить</Button>
             </div>
             <form action="" className="header__form">
                <TextField
@@ -30,7 +23,7 @@ function Header({filterTitle}) {
                   id="outlined-basic"
                   label="Название фильма"
                   variant="outlined"
-                  onChange={filterTitle}
+                  onChange={getValueInput}
                />
                <Button>Поиск</Button>
             </form>
