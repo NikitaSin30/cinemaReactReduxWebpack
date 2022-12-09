@@ -1,4 +1,5 @@
 import Card from '@mui/material/Card';
+import { Link } from 'react-router-dom';
 
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -17,7 +18,7 @@ function Movie({ nameRus, posterSmall, id }) {
                </Typography>
             </CardContent>
             <CardActions>
-               <Button size="small">Подробнее</Button>
+               <Link to={`aboutMovie${id}`}>Подробнее</Link>
             </CardActions>
          </Card>
       </>

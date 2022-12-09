@@ -1,18 +1,15 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './Componets/Header/Header.jsx';
 import MainPage from './Componets/MainPage/MainPage.jsx';
 import { getDataApi } from './ConnectApi/methodAPI/getFilms.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-   setArrayMovies,
-   setError,
-   getValuyInput,
-} from './Store/Actions/action';
+import { setArrayMovies, setError } from './Store/Actions/action';
+import AboutMovie from './Componets/Movies/AboutMovie.jsx';
 
 function App() {
    const dispatch = useDispatch();
-   // const [inputValueTitle, setInputValueTitle] = useState('');
    const stateMovie = useSelector((state) => state.moviesReducer.movies);
 
    const moviesList = stateMovie.map((item) => {
@@ -20,8 +17,12 @@ function App() {
          id: item.id,
          nameRus: item.name_russian,
          posterSmall: item.small_poster,
+         bigPoster: item.big_poster,
+         description: item.description,
+         year: item.year,
       };
    });
+   console.log(stateMovie);
 
    async function getMovies() {
       try {
@@ -33,7 +34,6 @@ function App() {
    }
 
    useEffect(() => {
-      console.log(654646)
       getMovies();
    }, []);
 
@@ -41,16 +41,19 @@ function App() {
       getMovies();
    }
 
-   // const filterTitleMovie = (e) => {
-   //    setInputValueTitle(e.target.value);
-   //    console.log(inputValueTitle);
-   // };
-
    return (
-      <div className="App">
-         <Header refreshPage={refreshPage} />
-         <MainPage moviesList={moviesList} />
-      </div>
+      <BrowserRouter>
+         <div className="App">
+            <Header refreshPage={refreshPage} />
+            <Routes>
+               <Route path="/" element={<MainPage moviesList={moviesList} />} />
+               <Route
+                  path={`aboutMovie`}
+                  element={<AboutMovie moviesList={moviesList} />}
+               />
+            </Routes>
+         </div>
+      </BrowserRouter>
    );
 }
 

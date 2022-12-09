@@ -1,4 +1,3 @@
-
 import { MOVIES_ALL } from '../constans';
 
 export async function getDataApi() {

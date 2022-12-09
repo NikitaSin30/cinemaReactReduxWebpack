@@ -1,11 +1,9 @@
-import { AppBar, Toolbar, Button, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import { Button, TextField } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { setValueInputState } from '../../Store/Actions/action.js';
 import './Header.css';
 
 function Header({ refreshPage }) {
-
    const dispatch = useDispatch();
    const getValueInput = (e) => {
       const inputValue = e.target.value.toLowerCase().trim();
