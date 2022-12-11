@@ -1,13 +1,19 @@
 import Card from '@mui/material/Card';
 import { Link } from 'react-router-dom';
-
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useDispatch } from 'react-redux';
+import { setClickIdMovie } from '../../Store/Actions/action.js';
 
 function Movie({ nameRus, posterSmall, id }) {
+   const dispatch = useDispatch();
+
+   function getMovieId(id) {
+      dispatch(setClickIdMovie(id));
+   }
+
    return (
       <>
          <Card sx={{ maxWidth: 345 }}>
@@ -18,7 +24,9 @@ function Movie({ nameRus, posterSmall, id }) {
                </Typography>
             </CardContent>
             <CardActions>
-               <Link to={`aboutMovie${id}`}>Подробнее</Link>
+               <Link to={`aboutMovie`} onClick={() => getMovieId(id)}>
+                  Подробнее
+               </Link>
             </CardActions>
          </Card>
       </>

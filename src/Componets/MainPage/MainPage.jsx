@@ -1,9 +1,9 @@
-import MoviesAll from '../Movies/MoviesAll.jsx';
+import Movies from '../Movies/Movies.jsx';
 
-function MainPage({ moviesList }) {
+function MainPage() {
    return (
       <div className="_container">
-         <MoviesAll moviesList={moviesList} />
+         <Movies />
       </div>
    );
 }

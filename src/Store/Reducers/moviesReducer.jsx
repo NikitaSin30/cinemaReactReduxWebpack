@@ -1,9 +1,7 @@
-/* eslint-disable default-case */
-import * as action from '../Actions/action.js';
-
 const initialStateMovies = {
    movies: [],
-   valueInput: '',
+   movieTitleOfSearch: '',
+   clickIdMovie: null,
    error: false,
 };
 
@@ -17,12 +15,17 @@ export const moviesReducer = (state = initialStateMovies, action) => {
       case 'FILTER_MOVIES_TITLE':
          return {
             ...state,
-            valueInput: action.payload,
+            movieTitleOfSearch: action.payload,
          };
       case 'LOADING_ERROR':
          return {
             ...state,
             error: '',
+         };
+      case 'CLICK_MOVIE_ID':
+         return {
+            ...state,
+            clickIdMovie: action.payload,
          };
       default:
          return state;

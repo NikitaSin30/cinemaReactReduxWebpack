@@ -6,10 +6,17 @@ export const setArrayMovies = (movieArray) =>{
     }
 }
 
-export const setValueInputState = (valueInput) => {
+export const setValueInputState = ( movieTitleOfSearch) => {
     return {
         type: 'FILTER_MOVIES_TITLE',
-        payload:valueInput,
+        payload: movieTitleOfSearch,
+    }
+}
+
+export const setClickIdMovie = (id) => {
+    return{
+        type: 'CLICK_MOVIE_ID',
+        payload: id,
     }
 }
 
