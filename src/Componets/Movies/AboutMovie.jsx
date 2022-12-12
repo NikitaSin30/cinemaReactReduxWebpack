@@ -1,27 +1,31 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import './AboutMovie.css';
 
 function AboutMovie() {
-   const movies = useSelector((state) => state.moviesReducer.movies);
-   const idMovieClick = useSelector(
-      (state) => state.moviesReducer.clickIdMovie
+   const selectedMovie = useSelector(
+      (state) => state.moviesReducer.selectedMovie
    );
 
-   const thisMovie = movies.filter((movie) => movie.id === idMovieClick);
+   //    function pullOutThisMovieOfLocalStorage() {
+   //       const thisMovie = localStorage.getItem('thisMovie');
+   //       try {
+   //          return JSON.parse(thisMovie);
+   //       } catch (error) {
+   //          console.log(error);
+   //       }
+   //    }
+   //    useEffect(()=>{
+   //     console.log(pullOutThisMovieOfLocalStorage())
+   //    })
+   //
 
-   window.localStorage.setItem('thisMovie', JSON.stringify(thisMovie));
-   function pullOutThisMovieOfLocalStorage() {
-      const thisMovie = localStorage.getItem('thisMovie');
-      try {
-         return JSON.parse(thisMovie);
-      } catch (error) {
-         console.log(error);
-      }
-   }
+   //    const a = Object.keys(selectedMovie).length === 0 ? <Navigate to='/'/> :
 
    return (
       <>
-         {pullOutThisMovieOfLocalStorage().map((movie) => {
+         {selectedMovie.map((movie) => {
             return (
                <div className="_container">
                   <div className="page__aboutMovie aboutMovie">

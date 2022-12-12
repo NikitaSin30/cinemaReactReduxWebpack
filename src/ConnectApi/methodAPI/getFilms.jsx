@@ -1,6 +1,6 @@
 import { GET_MOVIES_URL } from '../constans';
 
-export async function getDataApi() {
+ async function getMovie() {
    try {
       const result = await fetch(GET_MOVIES_URL);
       const response = await result.json();
@@ -9,3 +9,5 @@ export async function getDataApi() {
       throw error;
    }
 }
+
+export default getMovie

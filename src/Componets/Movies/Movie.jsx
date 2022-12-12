@@ -4,14 +4,17 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { useDispatch } from 'react-redux';
-import { setClickIdMovie } from '../../Store/Actions/action.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { putDownSelectedMovie } from '../../Store/Actions/action.js';
 
 function Movie({ nameRus, posterSmall, id }) {
    const dispatch = useDispatch();
+   const movies = useSelector((state) => state.moviesReducer.movies);
 
-   function getMovieId(id) {
-      dispatch(setClickIdMovie(id));
+   function onClickGetMovie(id) {
+      const selectedMovie = movies.filter((movie) => movie.id === id);
+      localStorage.setItem('selectedMovie', JSON.stringify(selectedMovie));
+      dispatch(putDownSelectedMovie(selectedMovie));
    }
 
    return (
@@ -24,7 +27,7 @@ function Movie({ nameRus, posterSmall, id }) {
                </Typography>
             </CardContent>
             <CardActions>
-               <Link to={`aboutMovie`} onClick={() => getMovieId(id)}>
+               <Link to={`aboutMovie`} onClick={() => onClickGetMovie(id)}>
                   Подробнее
                </Link>
             </CardActions>

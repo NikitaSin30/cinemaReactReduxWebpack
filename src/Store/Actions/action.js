@@ -1,26 +1,26 @@
 
-export const setArrayMovies = (movieArray) =>{
+export const putDownMovies = (movieArray) =>{
     return {
         type: 'LOADING_MOVIES',
         payload: movieArray,
     }
 }
 
-export const setValueInputState = ( movieTitleOfSearch) => {
+export const putDownTitleofSearch = ( movieTitleOfSearch) => {
     return {
-        type: 'FILTER_MOVIES_TITLE',
+        type: 'MOVIE_TITLE_OF_SEARCH',
         payload: movieTitleOfSearch,
     }
 }
 
-export const setClickIdMovie = (id) => {
+export const putDownSelectedMovie = (clickMovie) => {
     return{
-        type: 'CLICK_MOVIE_ID',
-        payload: id,
+        type: 'SELECTED_MOVIE',
+        payload: clickMovie,
     }
 }
 
-export const setError = () =>{
+export const putDownStatusError = () =>{
     return{
         type:'LOADED_ERROR',
         payload:''

@@ -1,7 +1,7 @@
 const initialStateMovies = {
    movies: [],
    movieTitleOfSearch: '',
-   clickIdMovie: null,
+   selectedMovie: [],
    error: false,
 };
 
@@ -12,7 +12,7 @@ export const moviesReducer = (state = initialStateMovies, action) => {
             ...state,
             movies: action.payload,
          };
-      case 'FILTER_MOVIES_TITLE':
+      case 'MOVIE_TITLE_OF_SEARCH':
          return {
             ...state,
             movieTitleOfSearch: action.payload,
@@ -22,10 +22,10 @@ export const moviesReducer = (state = initialStateMovies, action) => {
             ...state,
             error: '',
          };
-      case 'CLICK_MOVIE_ID':
+      case 'SELECTED_MOVIE':
          return {
             ...state,
-            clickIdMovie: action.payload,
+            selectedMovie: action.payload,
          };
       default:
          return state;

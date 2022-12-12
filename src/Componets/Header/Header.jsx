@@ -1,14 +1,13 @@
 import { Button, TextField } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { setValueInputState } from '../../Store/Actions/action.js';
+import { putDownTitleofSearch } from '../../Store/Actions/action.js';
 import './Header.css';
-
 
 function Header({ refreshPage }) {
    const dispatch = useDispatch();
    const getValueInput = (e) => {
       const inputValueHeader = e.target.value.toLowerCase().trim();
-      dispatch(setValueInputState(inputValueHeader));
+      dispatch(putDownTitleofSearch(inputValueHeader));
    };
    return (
       <header className="header">
@@ -16,7 +15,7 @@ function Header({ refreshPage }) {
             <div className="header__btn">
                <Button onClick={refreshPage}>Обновить</Button>
             </div>
-            <form action="" className="header__form form-header">
+            <form action="" className="header__form">
                <TextField
                   className="form-header__search"
                   id="outlined-basic"
@@ -24,7 +23,6 @@ function Header({ refreshPage }) {
                   variant="outlined"
                   onChange={getValueInput}
                />
-               <Button>Поиск</Button>
             </form>
          </div>
       </header>
