@@ -19,5 +19,7 @@ header{
     align-items: center;
 
 }
-
-
+.header__link{
+    color: white;
+    
+}

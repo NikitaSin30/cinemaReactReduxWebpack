@@ -1,13 +1,11 @@
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
-import './AboutMovie.css';
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
+import './AboutMovie.css'
 
 function AboutMovie() {
-   const selectedMovie = useSelector(
-      (state) => state.moviesReducer.selectedMovie
-   );
-
+   // const selectedMovie = useSelector((state) => state.moviesReducer.selectedMovie);
+   const selectedMovie = JSON.parse(localStorage.getItem('selectedMovie'))
    //    function pullOutThisMovieOfLocalStorage() {
    //       const thisMovie = localStorage.getItem('thisMovie');
    //       try {
@@ -39,13 +37,13 @@ function AboutMovie() {
                         <div className="aboutMovie-info__actors">
                            <h2>Актёры:</h2>
                            {movie.persons.map((person) => {
-                              return <h3>{person.name_russian},</h3>;
+                              return <h3>{person.name_russian},</h3>
                            })}
                         </div>
                         <div className="aboutMovie-info__genres">
                            <h2>Жанр:</h2>
                            {movie.genres.map((genre) => {
-                              return <h3>{genre.name_ru},</h3>;
+                              return <h3>{genre.name_ru},</h3>
                            })}
                         </div>
                         <p className="aboutMovie-info__aboutWhat">
@@ -59,10 +57,10 @@ function AboutMovie() {
                      </div>
                   </div>
                </div>
-            );
+            )
          })}
       </>
-   );
+   )
 }
 
-export default AboutMovie;
+export default AboutMovie

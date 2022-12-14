@@ -26,7 +26,10 @@
       "extends": [
          "react-app",
          "react-app/jest"
-      ]
+      ],
+      "lint": "eslint .",
+      "lint:fix": "eslint --fix",
+      "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
    },
    "browserslist": {
       "production": [
@@ -48,7 +51,14 @@
       "babel-loader": "^9.1.0",
       "clean-webpack-plugin": "^4.0.0",
       "css-loader": "^6.7.2",
+      "eslint": "^8.29.0",
+      "eslint-config-prettier": "^8.5.0",
+      "eslint-plugin-import": "^2.26.0",
+      "eslint-plugin-prettier": "^4.2.1",
+      "eslint-plugin-react": "^7.31.11",
+      "eslint-plugin-react-hooks": "^4.6.0",
       "html-webpack-plugin": "^5.5.0",
+      "prettier": "^2.8.1",
       "style-loader": "^3.3.1",
       "svg-inline-loader": "^0.8.2",
       "webpack": "^5.75.0",

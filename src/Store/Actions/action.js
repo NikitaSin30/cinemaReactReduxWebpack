@@ -26,3 +26,17 @@ export const putDownStatusError = () =>{
         payload:''
     }
 }
+
+export const putDownReleaseYear = (releaseYear) => {
+    return{
+        type:'RELEASE_YEAR',
+        payload: releaseYear
+    }
+}
+
+export const putDownGenres = (genres) => {
+    return{
+        type:'GENRES',
+        payload: genres
+    }
+}
