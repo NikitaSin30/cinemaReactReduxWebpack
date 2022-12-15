@@ -23,10 +23,9 @@ function Movies() {
       return sortedMoviesGenres
    }
 
-   console.log(filterGenre(movies))
 
    const filterRelease = (arr) => {
-      return arr.filter((movie) => movie.year === releaseYear)
+      return arr.filter((movie) => movie.year > releaseYear)
    }
 
    const filterTitleMovie = (arr) => {

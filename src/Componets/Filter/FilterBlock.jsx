@@ -40,14 +40,13 @@ function FilterBlock() {
                className="filter-block__releaseYear"
                onClick={getReleaseYeaer}>
                <option value="">Год</option>
-               <option value="1948">1948</option>
-               <option value="2020">2020</option>
-               <option value="2019">2019</option>
-               <option value="2018">2018</option>
-               <option value="2017">2017</option>
-               <option value="2016">Старше</option>
+               <option value="2000">2000 и свежее</option>
+               <option value="1990">1990 и свежее</option>
+               <option value="1980">1980 и свежее</option>
+               <option value="1970">1970 и свежее</option>
+               <option value="1960">1960 и свежее</option>
+               <option value="1940">1940 и свежее</option>
             </select>
-            {/* <button>Click</button> */}
          </form>
          <TextField
             id="outlined-basic"

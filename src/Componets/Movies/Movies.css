@@ -3,7 +3,7 @@
    grid-template-columns: repeat(3, 1fr);
    gap: 20px;
    padding: 10px;
-   justify-content: center;
+   justify-items: center;
 }
 
 @media (max-width: 967px) {
@@ -15,5 +15,6 @@
 @media (max-width: 480px) {
    .grid {
       grid-template-columns: 1fr;
+      
    }
 }
