@@ -11,9 +11,9 @@ function Movies() {
    const genres = useSelector((state) => state.moviesReducer.genres)
    const releaseYear = useSelector((state) => state.moviesReducer.releaseYear)
 
-   const filterGenre = (movies) => {
+   const filterGenre = (arr) => {
       let sortedMoviesGenres = []
-      movies.forEach((movie) => {
+      arr.forEach((movie) => {
          return movie.genres.forEach((item) => {
             if (item.name_ru === genres) {
                sortedMoviesGenres.push(movie)
@@ -23,17 +23,40 @@ function Movies() {
       return sortedMoviesGenres
    }
 
-   const filterRelease = useMemo(() => {
-      return movies.filter((movie) => movie.year === releaseYear)
-   })
+   console.log(filterGenre(movies))
 
-   const filterTitleMovie = useMemo(() => {
-      return movies.filter((movie) =>
+   const filterRelease = (arr) => {
+      return arr.filter((movie) => movie.year === releaseYear)
+   }
+
+   const filterTitleMovie = (arr) => {
+      return arr.filter((movie) =>
          movie.name_russian.toLowerCase().trim().includes(inputValueHeader)
       )
-   })
+   }
 
-   const customMovies = inputValueHeader === '' ? movies : filterTitleMovie
+   const custom = () => {
+      if (genres === '' && releaseYear === '' && inputValueHeader === '')
+         return movies
+      if (genres !== '' && releaseYear === '' && inputValueHeader === '')
+         return filterGenre(movies)
+      if (genres === '' && releaseYear !== '' && inputValueHeader === '')
+         return filterRelease(movies)
+      if (genres === '' && releaseYear === '' && inputValueHeader !== '')
+         return filterTitleMovie(movies)
+      if (genres !== '' && releaseYear !== '' && inputValueHeader === '')
+         return filterGenre(filterRelease(movies))
+      if (genres !== '' && releaseYear === '' && inputValueHeader !== '')
+         return filterGenre(filterTitleMovie(movies))
+      if (genres === '' && releaseYear !== '' && inputValueHeader !== '')
+         return filterRelease(filterTitleMovie(movies))
+      if (genres !== '' && releaseYear !== '' && inputValueHeader !== '')
+         return filterGenre(filterRelease(filterTitleMovie(movies)))
+   }
+
+   const customMovies = custom()
+
+   // const customMovies = inputValueHeader === '' ? movies : filterTitleMovie
 
    return (
       <div className="grid">

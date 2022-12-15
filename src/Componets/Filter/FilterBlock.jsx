@@ -28,9 +28,9 @@ function FilterBlock() {
          <form className="filter-block">
             <select className="filter-block__genre" onClick={getGenre}>
                <option value="">Жанр</option>
-               <option value="семейный">Семейный</option>
+               <option value="комедия">Комедия</option>
                <option value="криминал">Криминал</option>
-               <option value="фэнтази">Фэнтези</option>
+               <option value="мелодрама">Мелодрама</option>
                <option value="драма">Драма</option>
                <option value="комедия">Комендия</option>
                <option value="боевик">Боевик</option>
@@ -47,7 +47,7 @@ function FilterBlock() {
                <option value="2017">2017</option>
                <option value="2016">Старше</option>
             </select>
-            <button>Click</button>
+            {/* <button>Click</button> */}
          </form>
          <TextField
             id="outlined-basic"
