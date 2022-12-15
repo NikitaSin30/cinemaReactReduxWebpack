@@ -4,23 +4,7 @@ import { Navigate } from 'react-router-dom'
 import './AboutMovie.css'
 
 function AboutMovie() {
-   // const selectedMovie = useSelector((state) => state.moviesReducer.selectedMovie);
    const selectedMovie = JSON.parse(localStorage.getItem('selectedMovie'))
-   //    function pullOutThisMovieOfLocalStorage() {
-   //       const thisMovie = localStorage.getItem('thisMovie');
-   //       try {
-   //          return JSON.parse(thisMovie);
-   //       } catch (error) {
-   //          console.log(error);
-   //       }
-   //    }
-   //    useEffect(()=>{
-   //     console.log(pullOutThisMovieOfLocalStorage())
-   //    })
-   //
-
-   //    const a = Object.keys(selectedMovie).length === 0 ? <Navigate to='/'/> :
-
    return (
       <>
          {selectedMovie.map((movie) => {

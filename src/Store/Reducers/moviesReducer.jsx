@@ -10,7 +10,7 @@ const initialStateMovies = {
 export const moviesReducer = (state = initialStateMovies, action) => {
    switch (action.type) {
       case 'LOADING_MOVIES':
-         console.log(action.payload);
+         console.log(action.payload)
          return {
             ...state,
             movies: action.payload,
@@ -31,14 +31,11 @@ export const moviesReducer = (state = initialStateMovies, action) => {
             selectedMovie: action.payload,
          }
       case 'GENRES':
-         console.log(action.payload);
          return {
             ...state,
             genres: action.payload,
          }
       case 'RELEASE_YEAR':
-         console.log(action.payload);
-
          return {
             ...state,
             releaseYear: action.payload,
