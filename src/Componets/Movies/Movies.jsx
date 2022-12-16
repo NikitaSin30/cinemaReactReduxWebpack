@@ -1,5 +1,5 @@
 import './Movies.css'
-import React, { useMemo } from 'react'
+import React from 'react'
 import Movie from './Movie.jsx'
 import { useSelector } from 'react-redux'
 
@@ -23,7 +23,6 @@ function Movies() {
       return sortedMoviesGenres
    }
 
-
    const filterRelease = (arr) => {
       return arr.filter((movie) => movie.year > releaseYear)
    }
@@ -34,28 +33,32 @@ function Movies() {
       )
    }
 
-   const custom = () => {
-      if (genres === '' && releaseYear === '' && inputValueHeader === '')
-         return movies
-      if (genres !== '' && releaseYear === '' && inputValueHeader === '')
-         return filterGenre(movies)
-      if (genres === '' && releaseYear !== '' && inputValueHeader === '')
-         return filterRelease(movies)
-      if (genres === '' && releaseYear === '' && inputValueHeader !== '')
+   const mapper = () => {
+      if (inputValueHeader) {
+         if (genres) {
+            if (releaseYear) {
+               return filterGenre(filterRelease(filterTitleMovie(movies)))
+            }
+            return filterGenre(filterTitleMovie(movies))
+         }
+         if (releaseYear) {
+            return filterRelease(filterTitleMovie(movies))
+         }
          return filterTitleMovie(movies)
-      if (genres !== '' && releaseYear !== '' && inputValueHeader === '')
-         return filterGenre(filterRelease(movies))
-      if (genres !== '' && releaseYear === '' && inputValueHeader !== '')
-         return filterGenre(filterTitleMovie(movies))
-      if (genres === '' && releaseYear !== '' && inputValueHeader !== '')
-         return filterRelease(filterTitleMovie(movies))
-      if (genres !== '' && releaseYear !== '' && inputValueHeader !== '')
-         return filterGenre(filterRelease(filterTitleMovie(movies)))
+      }
+      if (genres) {
+         if (releaseYear) {
+            return filterGenre(filterRelease(movies))
+         }
+         return filterGenre(movies)
+      }
+      if (releaseYear) {
+         return filterRelease(movies)
+      }
+      return movies
    }
 
-   const customMovies = custom()
-
-   // const customMovies = inputValueHeader === '' ? movies : filterTitleMovie
+   const customMovies = mapper()
 
    return (
       <div className="grid">
