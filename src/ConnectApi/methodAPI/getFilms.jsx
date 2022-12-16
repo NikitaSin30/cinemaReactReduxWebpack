@@ -1,4 +1,4 @@
-import { GET_MOVIES_URL } from '../constans'
+import { GET_MOVIES_URL } from '../constans.js'
 
 export async function apiGetMovies() {
    try {
