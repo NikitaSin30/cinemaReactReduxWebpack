@@ -1,15 +1,7 @@
 import { Link } from 'react-router-dom'
-
-import { useSelector } from 'react-redux'
 import './Movie.css'
 
-function Movie({ nameRus, posterSmall, id }) {
-   const movies = useSelector((state) => state.moviesReducer.movies)
-
-   function onClickGetMovie(id) {
-      const selectedMovie = movies.filter((movie) => movie.id === id)
-      localStorage.setItem('selectedMovie', JSON.stringify(selectedMovie))
-   }
+function Movie({ nameRus, posterSmall, id,onClickGetMovie }) {
 
    return (
       <>

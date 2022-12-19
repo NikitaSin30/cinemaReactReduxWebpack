@@ -1,29 +1,28 @@
 const initialStateMovies = {
    movies: [],
-   movieTitleOfSearch: '',
+   movieName: '',
    selectedMovie: [],
-   releaseYear: '',
-   genres: '',
-   error: false,
+   selectedReleaseYear: '',
+   selectedGenre: '',
+   errorS: false,
 }
 
 export const moviesReducer = (state = initialStateMovies, action) => {
    switch (action.type) {
-      case 'LOADING_MOVIES':
-         console.log(action.payload)
+      case 'LOADED_MOVIES':
          return {
             ...state,
             movies: action.payload,
          }
-      case 'MOVIE_TITLE_OF_SEARCH':
+      case 'TYPE_MOVIE_IN_SEARCH':
          return {
             ...state,
-            movieTitleOfSearch: action.payload,
+            movieName: action.payload,
          }
-      case 'LOADING_ERROR':
+      case 'ERROR':
          return {
             ...state,
-            error: '',
+            error: true,
          }
       case 'SELECTED_MOVIE':
          return {
@@ -33,12 +32,12 @@ export const moviesReducer = (state = initialStateMovies, action) => {
       case 'GENRES':
          return {
             ...state,
-            genres: action.payload,
+            selectedGenre: action.payload,
          }
       case 'RELEASE_YEAR':
          return {
             ...state,
-            releaseYear: action.payload,
+            selectedReleaseYear: action.payload,
          }
       default:
          return state

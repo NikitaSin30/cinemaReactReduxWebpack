@@ -1,4 +1,4 @@
-import Movies from '../Movies/Movies.jsx'
+import Movies from '../movies/Movies.jsx'
 
 function MainPage() {
    return (

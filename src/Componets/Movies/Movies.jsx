@@ -6,10 +6,12 @@ import { useSelector } from 'react-redux'
 function Movies() {
    const movies = useSelector((state) => state.moviesReducer.movies)
    const inputValueHeader = useSelector(
-      (state) => state.moviesReducer.movieTitleOfSearch
+      (state) => state.moviesReducer.movieName
    )
-   const genres = useSelector((state) => state.moviesReducer.genres)
-   const releaseYear = useSelector((state) => state.moviesReducer.releaseYear)
+   const genres = useSelector((state) => state.moviesReducer.selectedGenre)
+   const releaseYear = useSelector(
+      (state) => state.moviesReducer.selectedReleaseYear
+   )
 
    const filterGenre = (arr) => {
       let sortedMoviesGenres = []
@@ -24,7 +26,7 @@ function Movies() {
    }
 
    const filterRelease = (arr) => {
-      return arr.filter((movie) => movie.year > releaseYear)
+      return arr.filter((movie) => movie.year == releaseYear)
    }
 
    const filterTitleMovie = (arr) => {
@@ -60,11 +62,17 @@ function Movies() {
 
    const customMovies = mapper()
 
+   function onClickGetMovie(id) {
+      const selectedMovie = movies.filter((movie) => movie.id === id)
+      localStorage.setItem('selectedMovie', JSON.stringify(selectedMovie))
+   }
+
    return (
       <div className="grid">
          {customMovies.map((movie) => {
             return (
                <Movie
+                  onClickGetMovie={onClickGetMovie}
                   id={movie.id}
                   key={movie.id}
                   nameRus={movie.name_russian}

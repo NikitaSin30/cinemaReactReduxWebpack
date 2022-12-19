@@ -1,51 +1,51 @@
-.page__aboutMovie {
+.page__about-movie {
    padding: 10px;
 }
-.aboutMovie__bigPoster {
+.about-movie__bigPoster {
    display: grid;
    place-items: center;
    margin-bottom: 20px;
    grid-template-columns: 1fr;
    grid-template-rows: 1fr;
 }
-.aboutMovie__bigPoster img {
+.about-movie__bigPoster img {
    object-fit: contain;
    width: 100%;
    max-width: 700px;
    max-height: 800px;
 }
-.aboutMovie__info > *:not(:last-child) {
+.about-movie-info > *:not(:last-child) {
    margin-bottom: 10px;
 }
 
-.aboutMovie-info__title {
+.about-movie-info__title {
    display: grid;
    place-items: center;
    margin-bottom: 20px;
 }
-.aboutMovie-info__title h2 {
+.about-movie-info__title h2 {
    font-size: 30px;
 }
-.aboutMovie-info__actors {
+.about-movie-info__actors {
    display: flex;
    flex-wrap: wrap;
 }
 
-.aboutMovie-info__actors > * {
+.about-movie-info__actors > * {
    margin-right: 5px;
 }
-.aboutMovie-info__genres {
+.about-movie-info__genres {
    display: flex;
    flex-wrap: wrap;
 }
-.aboutMovie-info__genres > * {
+.about-movie-info__genres > * {
    margin-right: 5px;
 }
 
-.aboutMovie-info__aboutWhat {
+.about-movie-info__description {
    font-size: 18px;
 }
-.aboutMvoie-info__trailer {
+.about-movie-info__trailer {
    display: grid;
    place-items: center;
    margin: 40px 0px;

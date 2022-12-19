@@ -1,0 +1,9 @@
+.error__text {
+font-size: 25px;
+color: rgb(233, 21, 21);
+text-align: center;
+}
+.page__error{
+    display: grid;
+    place-items: center;
+}

@@ -98,5 +98,11 @@ h6 {
 ._container{
   max-width: 1000px;
   margin: 0 auto;
-  
+  width: 100%;
+
+}
+.html,
+.body,
+#root{
+  height: 100%;
 }

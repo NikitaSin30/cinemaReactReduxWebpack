@@ -1,5 +1,5 @@
 import './Header.css'
-import FilterBlock from '../Filter/FilterBlock.jsx'
+import FilterBlock from '../filter/FilterBlock.jsx'
 import { Route, Routes, Link } from 'react-router-dom'
 
 function Header() {
