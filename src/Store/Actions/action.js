@@ -1,6 +1,7 @@
-export const request = (url) => {
+import {GET_MOVIES_URL} from '../../api/constans'
+export const request = () => {
    return (dispatch) => {
-      fetch(url)
+      fetch(GET_MOVIES_URL)
          .then((response) => response.json())
          .then((result) => {
             const { data } = result

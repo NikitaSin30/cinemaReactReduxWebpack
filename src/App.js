@@ -11,7 +11,7 @@ function App() {
    const dispatch = useDispatch()
 
    useEffect(() => {
-      dispatch(request(GET_MOVIES_URL))
+      dispatch(request())
    }, [])
 
    return (
