@@ -4,14 +4,21 @@ const initialStateMovies = {
    selectedMovie: [],
    selectedReleaseYear: '',
    selectedGenre: '',
-   errorS: false,
+   error: false,
+   loading: false,
 }
 
 export const moviesReducer = (state = initialStateMovies, action) => {
    switch (action.type) {
+      case 'LOADING_MOVIES':
+         return {
+            ...state,
+            loading: true,
+         }
       case 'LOADED_MOVIES':
          return {
             ...state,
+            loading:false,
             movies: action.payload,
          }
       case 'TYPE_MOVIE_IN_SEARCH':

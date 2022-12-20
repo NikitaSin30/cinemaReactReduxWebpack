@@ -1,7 +1,10 @@
-import {GET_MOVIES_URL} from '../../api/constans'
+// import {GET_MOVIES_URL} from '../../api/constans'
+import { apiGetMovies } from '../../api/apiGetMovies'
 export const request = () => {
    return (dispatch) => {
-      fetch(GET_MOVIES_URL)
+    dispatch(setLoading())
+      apiGetMovies()
+        //   fetch(GET_MOVIES_URL)
          .then((response) => response.json())
          .then((result) => {
             const { data } = result
@@ -10,6 +13,12 @@ export const request = () => {
          .then((data) => dispatch(setMovies(data)))
          .catch(() => dispatch(setStatusError()))
    }
+}
+
+export const setLoading = () => {
+    return {
+        type: 'LOADING_MOVIES',
+     }
 }
 
 export const setMovies = (movieArray) => {
@@ -52,10 +61,3 @@ export const setGenres = (selectedGenre) => {
       payload: selectedGenre,
    }
 }
-
-// export const setStatusErro = (setGenres) =>{
-//     return dispatch => {
-//         dispatch(setGenres());
-//         // type:'ERROR',
-//     }
-// }

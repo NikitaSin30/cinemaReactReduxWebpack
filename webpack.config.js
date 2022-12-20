@@ -7,7 +7,7 @@ module.exports = {
   entry: path.resolve(__dirname, './src/index.js'),
   module: {
     rules: [
-      { test: /\.(svg|png|jpg)$/, use: 'file-loader' },
+      { test: /\.(svg|png|jpg|gif)$/, use: 'file-loader' },
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
       {
         test: /\.js$/,
