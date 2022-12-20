@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { request } from './Store/actions/action'
 import AboutMovie from './Componets/movies/AboutMovie.jsx'
 import Layout from './Componets/routeLayout/Layout.jsx'
-import { GET_MOVIES_URL } from './api/constans.js'
+
 function App() {
    const dispatch = useDispatch()
 
