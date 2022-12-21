@@ -1,4 +1,4 @@
-import './AboutMovie.css'
+import './aboutMovie.css'
 
 function AboutMovie() {
    const selectedMovie = JSON.parse(localStorage.getItem('selectedMovie'))
@@ -17,14 +17,14 @@ function AboutMovie() {
                         </div>
                         <div className="about-movie-info__actors">
                            <h2>Актёры:</h2>
-                           {movie.persons.map((person) => {
-                              return <h3>{person.name_russian},</h3>
+                           {movie.persons.map((person, index) => {
+                              return <h3 key={index}>{person.name_russian},</h3>
                            })}
                         </div>
                         <div className="about-movie-info__genres">
                            <h2>Жанр:</h2>
-                           {movie.genres.map((genre) => {
-                              return <h3>{genre.name_ru},</h3>
+                           {movie.genres.map((genre, index) => {
+                              return <h3 key={index}>{genre.name_ru},</h3>
                            })}
                         </div>
                         <p className="about-movie-info__description">
@@ -34,7 +34,7 @@ function AboutMovie() {
                            <iframe
                               width="560"
                               height="315"
-                              src="https://www.youtube.com/embed/7-W7gzBkNz0"
+                              src={movie.trailer}
                               title="YouTube video player"
                               frameborder="0"
                               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

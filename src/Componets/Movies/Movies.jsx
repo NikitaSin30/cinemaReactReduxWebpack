@@ -1,7 +1,9 @@
 import './Movies.css'
-import React from 'react'
-import Movie from './Movie.jsx'
+import React  from 'react'
+import Movie from './movies.css'
 import { useSelector } from 'react-redux'
+
+
 
 function Movies() {
    const movies = useSelector((state) => state.moviesReducer.movies)
@@ -12,6 +14,8 @@ function Movies() {
    const releaseYear = useSelector(
       (state) => state.moviesReducer.selectedReleaseYear
    )
+
+
 
    const filterGenre = (arr) => {
       let sortedMoviesGenres = []

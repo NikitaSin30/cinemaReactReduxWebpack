@@ -1,37 +1,34 @@
-// import {GET_MOVIES_URL} from '../../api/constans'
-import { apiGetMovies } from '../../api/apiGetMovies'
-export const request = () => {
-   return (dispatch) => {
-    dispatch(setLoading())
-      apiGetMovies()
-        //   fetch(GET_MOVIES_URL)
-         .then((response) => response.json())
-         .then((result) => {
-            const { data } = result
-            return data
-         })
-         .then((data) => dispatch(setMovies(data)))
-         .catch(() => dispatch(setStatusError()))
+import api from '../../api'
+
+export const mountMovies = () => {
+   return async (dispatch) => {
+      dispatch(setLoading())
+      try {
+         const movies = await api.getMovies()
+         dispatch(setMovies(movies))
+      } catch (error) {
+         dispatch(setStatusError())
+      }
    }
 }
 
 export const setLoading = () => {
-    return {
-        type: 'LOADING_MOVIES',
-     }
-}
-
-export const setMovies = (movieArray) => {
    return {
-      type: 'LOADED_MOVIES',
-      payload: movieArray,
+      type: 'LOADING_MOVIES',
    }
 }
 
-export const setTitleofSearch = (movieName) => {
+export const setMovies = (movies) => {
+   return {
+      type: 'LOADED_MOVIES',
+      payload: movies,
+   }
+}
+
+export const setTitleofSearch = (titleMovieSearch) => {
    return {
       type: 'TYPE_MOVIE_IN_SEARCH',
-      payload: movieName,
+      payload: titleMovieSearch,
    }
 }
 

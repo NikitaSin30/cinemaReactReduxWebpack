@@ -3,15 +3,16 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import MainPage from './Componets/mainPage/MainPage.jsx'
 import { useDispatch } from 'react-redux'
-import { request } from './Store/actions/action'
+import { mountMovies } from './Store/actions/action'
 import AboutMovie from './Componets/movies/AboutMovie.jsx'
 import Layout from './Componets/routeLayout/Layout.jsx'
+
 
 function App() {
    const dispatch = useDispatch()
 
    useEffect(() => {
-      dispatch(request())
+      dispatch(mountMovies())
    }, [])
 
    return (

@@ -6,7 +6,7 @@ import {
    setGenres,
 } from '../../Store/actions/action.js'
 import { mountGenres, mountReleaseYear } from './mountMethod.js'
-import './Filter.css'
+import './filter.css'
 
 function FilterBlock() {
    const dispatch = useDispatch()

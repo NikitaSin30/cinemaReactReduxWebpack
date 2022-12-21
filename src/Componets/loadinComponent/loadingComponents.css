@@ -1,0 +1,5 @@
+.loading-container{
+    display: grid;
+    place-items: center;
+}
+

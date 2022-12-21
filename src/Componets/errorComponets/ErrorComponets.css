@@ -7,3 +7,8 @@ text-align: center;
     display: grid;
     place-items: center;
 }
+.error-container{
+    display: grid;
+    place-items: center;
+}
+

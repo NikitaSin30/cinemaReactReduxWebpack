@@ -4,14 +4,14 @@ import ErrorComponets from '../errorComponets/ErrorComponets.jsx'
 import { useSelector } from 'react-redux'
 import LoadingComponent from '../loadinComponent/LoadingComponents.jsx'
 function Layout() {
-   const error = useSelector((state) => state.moviesReducer.error)
-   const load = useSelector((state) => state.moviesReducer.loading)
-   console.log(load)
+   const isError = useSelector((state) => state.moviesReducer.isError)
+   const isLoading = useSelector((state) => state.moviesReducer.isLoading)
+
    return (
       <>
          <Header />
-         {load ? <LoadingComponent/> : <Outlet/>}
-         {error ? <ErrorComponets /> : <Outlet />}
+         {isLoading ? <LoadingComponent/> : <Outlet/>}
+         {isError ? <ErrorComponets /> : <Outlet />}
       </>
    )
 }
