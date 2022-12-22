@@ -1,27 +1,32 @@
-import './Movies.css'
-import React  from 'react'
-import Movie from './movies.css'
+import './movies.css'
+import React, { useState } from 'react'
+import Movie from './Movie.jsx'
 import { useSelector } from 'react-redux'
-
-
+import { Button } from '@mui/material'
 
 function Movies() {
    const movies = useSelector((state) => state.moviesReducer.movies)
-   const inputValueHeader = useSelector(
-      (state) => state.moviesReducer.movieName
+   const titleMovieSearch = useSelector(
+      (state) => state.moviesReducer.titleMovieSearch
    )
-   const genres = useSelector((state) => state.moviesReducer.selectedGenre)
+   const genre = useSelector((state) => state.moviesReducer.selectedGenre)
    const releaseYear = useSelector(
       (state) => state.moviesReducer.selectedReleaseYear
    )
+   const quantityShowMovies = 9
+   let [currentPage, setCurrentPage] = useState(1)
+   let [end, setEnd] = useState(quantityShowMovies)
 
-
+   function addMoviesOnPage() {
+      setCurrentPage((currentPage += 1))
+      setEnd(quantityShowMovies * currentPage)
+   }
 
    const filterGenre = (arr) => {
       let sortedMoviesGenres = []
       arr.forEach((movie) => {
          return movie.genres.forEach((item) => {
-            if (item.name_ru === genres) {
+            if (item.name_ru === genre) {
                sortedMoviesGenres.push(movie)
             }
          })
@@ -35,13 +40,13 @@ function Movies() {
 
    const filterTitleMovie = (arr) => {
       return arr.filter((movie) =>
-         movie.name_russian.toLowerCase().trim().includes(inputValueHeader)
+         movie.name_russian.toLowerCase().trim().includes(titleMovieSearch)
       )
    }
 
    const mapper = () => {
-      if (inputValueHeader) {
-         if (genres) {
+      if (titleMovieSearch) {
+         if (genre) {
             if (releaseYear) {
                return filterGenre(filterRelease(filterTitleMovie(movies)))
             }
@@ -52,7 +57,7 @@ function Movies() {
          }
          return filterTitleMovie(movies)
       }
-      if (genres) {
+      if (genre) {
          if (releaseYear) {
             return filterGenre(filterRelease(movies))
          }
@@ -72,18 +77,25 @@ function Movies() {
    }
 
    return (
-      <div className="grid">
-         {customMovies.map((movie) => {
-            return (
-               <Movie
-                  onClickGetMovie={onClickGetMovie}
-                  id={movie.id}
-                  key={movie.id}
-                  nameRus={movie.name_russian}
-                  posterSmall={movie.small_poster}
-               />
-            )
-         })}
+      <div className="movies">
+         <div className="grid">
+            {customMovies.slice(0, end).map((movie) => {
+               return (
+                  <Movie
+                     onClickGetMovie={onClickGetMovie}
+                     id={movie.id}
+                     key={movie.id}
+                     nameRus={movie.name_russian}
+                     posterSmall={movie.small_poster}
+                  />
+               )
+            })}
+         </div>
+         {end < 50 ? (
+            <Button onClick={addMoviesOnPage} variant="contained">
+               Показать ещё
+            </Button>
+         ) : null}
       </div>
    )
 }

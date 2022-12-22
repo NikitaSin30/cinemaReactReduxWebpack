@@ -10,7 +10,7 @@ function Layout() {
    return (
       <>
          <Header />
-         {isLoading ? <LoadingComponent/> : <Outlet/>}
+         {/* {isLoading ? <LoadingComponent/> : <Outlet/>} */}
          {isError ? <ErrorComponets /> : <Outlet />}
       </>
    )

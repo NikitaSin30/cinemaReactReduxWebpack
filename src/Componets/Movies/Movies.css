@@ -1,3 +1,9 @@
+.movies{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
 .grid {
    display: grid;
    grid-template-columns: repeat(3, 1fr);
@@ -15,6 +21,6 @@
 @media (max-width: 480px) {
    .grid {
       grid-template-columns: 1fr;
-      
+
    }
 }
