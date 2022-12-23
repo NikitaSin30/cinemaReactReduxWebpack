@@ -5,14 +5,14 @@ import {
    setReleaseYear,
    setGenres,
 } from '../../Store/actions/action.js'
-import { mountGenres, mountReleaseYear } from './mountMethod.js'
+import { mountSelectGenres, mountSelectReleaseYear } from './mountMethod.js'
 import './filter.css'
 
 function FilterBlock() {
    const dispatch = useDispatch()
    const movies = useSelector((state) => state.moviesReducer.movies)
-   const GENRES = mountGenres(movies)
-   const RELEASE_YEAR = mountReleaseYear(movies)
+   const GENRES = mountSelectGenres(movies)
+   const RELEASE_YEAR = mountSelectReleaseYear(movies)
 
    const getValueInput = (e) => {
       const inputValueHeader = e.target.value.toLowerCase().trim()
@@ -33,7 +33,11 @@ function FilterBlock() {
             <select className="filter-block__genre" onClick={getGenre}>
                <option value="">Жанр</option>
                {GENRES.map((genre) => {
-                  return <option key ={genre} value={genre}>{capitalize(genre)}</option>
+                  return (
+                     <option key={genre} value={genre}>
+                        {capitalize(genre)}
+                     </option>
+                  )
                })}
             </select>
             <select
@@ -42,7 +46,11 @@ function FilterBlock() {
                onClick={getReleaseYeaer}>
                <option value="">Год</option>
                {RELEASE_YEAR.map((year) => {
-                  return <option key={year} value={year}>{year}</option>
+                  return (
+                     <option key={year} value={year}>
+                        {year}
+                     </option>
+                  )
                })}
             </select>
          </form>

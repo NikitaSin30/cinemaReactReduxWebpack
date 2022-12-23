@@ -6,7 +6,6 @@ const initialStateMovies = {
    selectedGenre: '',
    isError: false,
    isLoading: false,
-   currentPage: 1,
 }
 
 export const moviesReducer = (state = initialStateMovies, action) => {
@@ -48,11 +47,7 @@ export const moviesReducer = (state = initialStateMovies, action) => {
             ...state,
             selectedReleaseYear: action.payload,
          }
-      // case 'NEXT_PAGE':
-      //    return {
-      //       ...state,
-      //        currentPage: currentPage + 1 ,
-      //    }
+
       default:
          return state
    }

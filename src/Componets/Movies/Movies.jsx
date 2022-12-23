@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Movie from './Movie.jsx'
 import { useSelector } from 'react-redux'
 import { Button } from '@mui/material'
+import { MoviesBuilder } from '../../api'
 
 function Movies() {
    const movies = useSelector((state) => state.moviesReducer.movies)
@@ -22,54 +23,13 @@ function Movies() {
       setEnd(quantityShowMovies * currentPage)
    }
 
-   const filterGenre = (arr) => {
-      let sortedMoviesGenres = []
-      arr.forEach((movie) => {
-         return movie.genres.forEach((item) => {
-            if (item.name_ru === genre) {
-               sortedMoviesGenres.push(movie)
-            }
-         })
-      })
-      return sortedMoviesGenres
-   }
+   const newMovies = new MoviesBuilder()
+      .build(movies)
+      .filterTitleMovie(titleMovieSearch)
+      .filterRelease(releaseYear)
+      .filterGenre(genre)
 
-   const filterRelease = (arr) => {
-      return arr.filter((movie) => movie.year == releaseYear)
-   }
-
-   const filterTitleMovie = (arr) => {
-      return arr.filter((movie) =>
-         movie.name_russian.toLowerCase().trim().includes(titleMovieSearch)
-      )
-   }
-
-   const mapper = () => {
-      if (titleMovieSearch) {
-         if (genre) {
-            if (releaseYear) {
-               return filterGenre(filterRelease(filterTitleMovie(movies)))
-            }
-            return filterGenre(filterTitleMovie(movies))
-         }
-         if (releaseYear) {
-            return filterRelease(filterTitleMovie(movies))
-         }
-         return filterTitleMovie(movies)
-      }
-      if (genre) {
-         if (releaseYear) {
-            return filterGenre(filterRelease(movies))
-         }
-         return filterGenre(movies)
-      }
-      if (releaseYear) {
-         return filterRelease(movies)
-      }
-      return movies
-   }
-
-   const customMovies = mapper()
+   const customMovies = newMovies.movies
 
    function onClickGetMovie(id) {
       const selectedMovie = movies.filter((movie) => movie.id === id)

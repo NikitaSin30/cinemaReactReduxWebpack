@@ -12,12 +12,6 @@ export const mountMovies = () => {
    }
 }
 
-// export const setNumberPage = () => {
-//    return{
-//       type:'NEXT_PAGE',
-//    }
-// }
-
 export const setLoading = () => {
    return {
       type: 'LOADING_MOVIES',

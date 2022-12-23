@@ -1,22 +1,21 @@
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './movie.css'
-import {setStatusError} from '../../Store/actions/action.js'
+import { setStatusError } from '../../Store/actions/action.js'
 
-
-function Movie({ nameRus, posterSmall, id,onClickGetMovie }) {
+function Movie({ nameRus, posterSmall, id, onClickGetMovie }) {
    const dispatch = useDispatch()
-   function fn () {
-   dispatch(setStatusError())
-}
-// src={posterSmall}
+   function fn() {
+      dispatch(setStatusError())
+   }
+   // src={posterSmall}
    return (
       <>
          <div className="card">
             <div className="car__item">
                <div className="card__content">
                   <div className="card__poster">
-                     <img  onError={fn} alt="Постер" className="card__img" />
+                     <img onError={fn} alt="Постер" className="card__img" />
                   </div>
                   <div className="card__text">
                      <h2 className="card__titleMovie">{nameRus}</h2>
