@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 import Movie from './Movie.jsx'
 import { useSelector } from 'react-redux'
 import { Button } from '@mui/material'
-import { MoviesBuilder } from '../../api'
+import { MoviesBuilder } from '../../mapper/moviesBuilder.js'
+import NoFilmsComponent from '../noFilmsComponent/noFilmsComponent.jsx'
 
 function Movies() {
    const movies = useSelector((state) => state.moviesReducer.movies)
@@ -23,8 +24,7 @@ function Movies() {
       setEnd(quantityShowMovies * currentPage)
    }
 
-   const newMovies = new MoviesBuilder()
-      .build(movies)
+   const newMovies = new MoviesBuilder(movies)
       .filterTitleMovie(titleMovieSearch)
       .filterRelease(releaseYear)
       .filterGenre(genre)
@@ -38,20 +38,24 @@ function Movies() {
 
    return (
       <div className="movies">
-         <div className="grid">
-            {customMovies.slice(0, end).map((movie) => {
-               return (
-                  <Movie
-                     onClickGetMovie={onClickGetMovie}
-                     id={movie.id}
-                     key={movie.id}
-                     nameRus={movie.name_russian}
-                     posterSmall={movie.small_poster}
-                  />
-               )
-            })}
-         </div>
-         {end < 50 ? (
+         {customMovies.length === 0 ? (
+            <NoFilmsComponent />
+         ) : (
+            <div className="grid">
+               {customMovies.slice(0, end).map((movie) => {
+                  return (
+                     <Movie
+                        onClickGetMovie={onClickGetMovie}
+                        id={movie.id}
+                        key={movie.id}
+                        nameRus={movie.name_russian}
+                        posterSmall={movie.small_poster}
+                     />
+                  )
+               })}
+            </div>
+         )}
+         {end < 50 && customMovies.length !== 0 ? (
             <Button onClick={addMoviesOnPage} variant="contained">
                Показать ещё
             </Button>

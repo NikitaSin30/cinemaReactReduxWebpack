@@ -20,7 +20,7 @@ function App() {
          <div className="App">
             <Routes>
                <Route path="/" element={<Layout />}>
-                  <Route index element={<MainPage />} />
+                  <Route index  element={<MainPage />} />
                   <Route path="aboutMovie" element={<AboutMovie />} />
                </Route>
             </Routes>

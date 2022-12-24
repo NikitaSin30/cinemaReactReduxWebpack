@@ -13,12 +13,12 @@ export const moviesReducer = (state = initialStateMovies, action) => {
       case 'LOADING_MOVIES':
          return {
             ...state,
-            loading: true,
+            isLoading: true,
          }
       case 'LOADED_MOVIES':
          return {
             ...state,
-            loading: false,
+            isLoading: null,
             movies: action.payload,
          }
       case 'TYPE_MOVIE_IN_SEARCH':

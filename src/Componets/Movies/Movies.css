@@ -3,7 +3,9 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   text-align: center;
 }
+
 .grid {
    display: grid;
    grid-template-columns: repeat(3, 1fr);
