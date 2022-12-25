@@ -2,7 +2,7 @@
    "name": "aviasales-app",
    "version": "0.1.0",
    "private": true,
-   "homepage": "https://NikitaSin30.github.io/cinema",
+   "homepage": "https://NikitaSin30.github.io/cinema/",
    "dependencies": {
       "@emotion/react": "^11.10.5",
       "@emotion/styled": "^11.10.5",
