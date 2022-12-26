@@ -1,25 +1,23 @@
-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgb(44, 44, 112);
-    height: 80px;
-    margin-bottom: 40px;
+header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background-color: rgb(44, 44, 112);
+   height: 80px;
+   margin-bottom: 40px;
 }
 
-.header__container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+.header__container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
 }
 
-.header__form{
-    display: flex;
-    align-items: center;
-
+.header__form {
+   display: flex;
+   align-items: center;
 }
-.header__link{
-    color: white;
-
+.header__link {
+   color: white;
 }
